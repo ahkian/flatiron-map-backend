@@ -1,5 +1,6 @@
 class Api::V1::EventsController < ApplicationController
 
+
   before_action :find_event, only: [:update]
    def index
      @events = Event.all
@@ -8,6 +9,7 @@ class Api::V1::EventsController < ApplicationController
 
 
   def create
+
     @event = Event.create(event_params)
     render json: @event
   end
@@ -29,7 +31,7 @@ class Api::V1::EventsController < ApplicationController
    private
 
    def event_params
-     params.require(:events).permit(:title, :time, :room_name, :room_id)
+     params.require(:event).permit(:title, :time, :room_name, :room_id)
    end
 
    def find_event
